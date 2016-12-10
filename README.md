@@ -3,6 +3,7 @@
 This is a [homebrew](http://brew.sh/) [tap](https://github.com/Homebrew/homebrew/blob/master/share/doc/homebrew/brew-tap.md)
 with various formulae I use for development.
 
+See [pinepain/ppa-packaging](https://github.com/pinepain/ppa-packaging) repository for Ubuntu PPA packaging.
 
 ### Requirements:
 
