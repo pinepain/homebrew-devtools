@@ -4,7 +4,7 @@ class V8AT57 < Formula
   desc "Google's JavaScript engine"
   homepage "https://github.com/v8/v8/wiki"
   url "https://chromium.googlesource.com/chromium/tools/depot_tools.git"
-  version "5.7.136"
+  version "5.7.202"
 
   # not building on Snow Leopard:
   # https://github.com/Homebrew/homebrew/issues/21426
