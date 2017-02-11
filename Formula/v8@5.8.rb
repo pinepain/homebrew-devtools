@@ -3,8 +3,8 @@
 class V8AT58 < Formula
   desc "Google's JavaScript engine"
   homepage "https://github.com/v8/v8/wiki"
-  url "https://github.com/v8/v8/archive/5.8.69.tar.gz"
-  sha256 "15271aa814a8e00f8a1b493084513eb5e0b88d6a4ca662f26f0a446bfe568d99"
+  url "https://github.com/v8/v8/archive/5.8.168.tar.gz"
+  sha256 "103a3e12125a1c7b5ffb66af46dd25e6c37302efa50db24a45f9db24d0281e97"
 
   keg_only "Provided V8 formula is co-installable and it is not installed in the library path."
 
@@ -19,7 +19,7 @@ class V8AT58 < Formula
 
   resource "depot_tools" do
     url "https://chromium.googlesource.com/chromium/tools/depot_tools.git",
-        :revision => "7afd16467e2c4f4375584746e698a6f0db5a42f9"
+        :revision => "af3a9993dec43f7d0304e191723f6e78ff38e0c8"
   end
 
   def install
