@@ -1,10 +1,10 @@
 # Track Chrome stable.
 # https://omahaproxy.appspot.com/
-class V8AT59 < Formula
+class V8AT60 < Formula
   desc "Google's JavaScript engine"
   homepage "https://github.com/v8/v8/wiki"
-  url "https://github.com/v8/v8/archive/5.9.211.3.tar.gz"
-  sha256 "fb418b1f94bb63b7ed47682d9982ff2a888f01e6a22eea2fcd2a658526bd054c"
+  url "https://github.com/v8/v8/archive/6.0.4.tar.gz"
+  sha256 "b5f1292c12f0762611703823121375b35f9cd465d6c90dd4b44f8003b43006da"
 
   keg_only "Provided V8 formula is co-installable and it is not installed in the library path."
 
