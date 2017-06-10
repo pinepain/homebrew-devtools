@@ -3,8 +3,8 @@
 class V8AT60 < Formula
   desc "Google's JavaScript engine"
   homepage "https://github.com/v8/v8/wiki"
-  url "https://github.com/v8/v8/archive/6.0.45.tar.gz"
-  sha256 "f9333aee826a85c1381237e3124d74367859631fa604cbe1479b63ee821f890d"
+  url "https://github.com/v8/v8/archive/6.0.286.13.tar.gz"
+  sha256 "e9a9f3d45cf011af02c726030aef579b6aa9bb84f2333b78f31f407457871379"
 
   keg_only "Provided V8 formula is co-installable and it is not installed in the library path."
 
@@ -19,7 +19,7 @@ class V8AT60 < Formula
 
   resource "depot_tools" do
     url "https://chromium.googlesource.com/chromium/tools/depot_tools.git",
-        :revision => "93f69da3b2e4e2bb6c612008c2732184865eec24"
+        :revision => "3a4a725026d23e8ae1cb926e963e6df722f456d5"
   end
 
   def install
@@ -64,7 +64,7 @@ class V8AT60 < Formula
         target_os_only = True
       EOS
 
-      system "gclient", "sync", "-vvv", "-j #{Hardware::CPU.cores}", "-r", v8_version
+      system "gclient", "sync", "--reset", "-vvv", "-j #{Hardware::CPU.cores}", "-r", v8_version
 
       cd "v8" do
         system gn_command
