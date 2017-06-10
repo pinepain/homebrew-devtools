@@ -64,7 +64,7 @@ class V8AT59 < Formula
         target_os_only = True
       EOS
 
-      system "gclient", "sync", "-vvv", "-j #{Hardware::CPU.cores}", "-r", v8_version
+      system "gclient", "sync", "--reset", "-vvv", "-j #{Hardware::CPU.cores}", "-r", v8_version
 
       cd "v8" do
         system gn_command

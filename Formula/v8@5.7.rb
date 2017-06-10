@@ -43,7 +43,7 @@ class V8AT57 < Formula
     if cache_location and File.directory?(cache_location)
       system "cp", "-R", cache_location, "v8"
     else
-      system "gclient", "sync", "-vvv", "-j #{Hardware::CPU.cores}", "-r", "#{version}" unless no_sync
+      system "gclient", "sync", "--reset", "-vvv", "-j #{Hardware::CPU.cores}", "-r", "#{version}" unless no_sync
 
       if cache_location and !File.directory?(cache_location)
         system "cp", "-R", "v8", cache_location
