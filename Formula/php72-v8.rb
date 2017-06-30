@@ -1,6 +1,6 @@
-require Formula['php70'].path.parent.parent + "Abstract/abstract-php-extension"
+require Formula['php72'].path.parent.parent + "Abstract/abstract-php-extension"
 
-class Php70V8 < AbstractPhp71Extension
+class Php72V8 < AbstractPhp72Extension
   init
   desc "PHP extension for V8 JavaScript engine"
   homepage "https://github.com/pinepain/php-v8"
