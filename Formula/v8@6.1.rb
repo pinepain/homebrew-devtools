@@ -3,8 +3,8 @@
 class V8AT61 < Formula
   desc "Google's JavaScript engine"
   homepage "https://github.com/v8/v8/wiki"
-  url "https://github.com/v8/v8/archive/6.1.170.tar.gz"
-  sha256 "2c433806de771da9087afc6a4f9a95a3627b2da1b306977bad6e6d8a3cfe41e0"
+  url "https://github.com/v8/v8/archive/6.1.344.tar.gz"
+  sha256 "a7dadc2031ebea5f24c1821d19a6fe2b84a3237d11e34f0b271b73b5fd6ba104"
 
   keg_only "Provided V8 formula is co-installable and it is not installed in the library path."
 
