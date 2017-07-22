@@ -4,8 +4,8 @@ class Php72V8 < AbstractPhp72Extension
   init
   desc "PHP extension for V8 JavaScript engine"
   homepage "https://github.com/pinepain/php-v8"
-  url "https://github.com/pinepain/php-v8/archive/v0.1.7.tar.gz"
-  sha256 "19f4950bf1c971fb69913a4ef5ae6ee21db65ffa1b58314412b5998ab4b74d32"
+  url "https://github.com/pinepain/php-v8/archive/v0.1.8.tar.gz"
+  sha256 "aa5480e72d750b367d82a48396caeadfdf7c3dd4a3e4c504d95a84bea49d35a3"
   head "https://github.com/pinepain/php-v8.git"
 
   depends_on 'v8@6.1'
