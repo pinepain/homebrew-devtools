@@ -8,13 +8,13 @@ class Php71V8 < AbstractPhp71Extension
   sha256 "aa5480e72d750b367d82a48396caeadfdf7c3dd4a3e4c504d95a84bea49d35a3"
   head "https://github.com/pinepain/php-v8.git"
 
-  depends_on 'v8@6.1'
+  depends_on 'v8@6.2'
 
   bottle do
   end
 
   def install
-    v8_prefix=Formula['v8@6.1'].opt_prefix
+    v8_prefix=Formula['v8@6.2'].opt_prefix
 
     safe_phpize
     system "./configure", "--prefix=#{prefix}", "--with-v8=#{v8_prefix}", phpconfig
