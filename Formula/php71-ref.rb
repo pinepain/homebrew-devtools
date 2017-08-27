@@ -1,4 +1,4 @@
-require File.expand_path("../../Abstract/abstract-php-extension", __FILE__)
+require Formula['php72'].path.parent.parent + "Abstract/abstract-php-extension"
 
 class Php71Ref < AbstractPhp71Extension
   init
