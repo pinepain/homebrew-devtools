@@ -1,0 +1,40 @@
+os: osx
+
+osx_image: xcode8.3
+
+env:
+  global:
+    - HOMEBREW_BOTTLE_DOMAIN="https://dl.bintray.com/pinepain"
+      BINTRAY_ROOT_URL="https://dl.bintray.com/pinepain/bottles-devtools"
+      BINTRAY_USER=pinepain
+
+before_install:
+ - env
+ - xcodebuild -version
+ - export TARGET_FORMULA=`echo ${TRAVIS_COMMIT_MESSAGE} | perl -n -e'/^build\s+([a-z0-9-]+)$/ && print $1'`
+ - export TARGET_FORMULA_NAME=`echo $TARGET_FORMULA | tr @ :`
+ - env
+ - if [ ! -f "./Formula/${TARGET_FORMULA}.rb" ]; then echo "Target formula \"${TARGET_FORMULA}\" does not exists"; exit 1; fi
+ - brew tap homebrew/php
+ - mkdir /usr/local/Homebrew/Library/Taps/pinepain && ln -s . /usr/local/Homebrew/Library/Taps/pinepain/homebrew-devtools
+ - git remote add upstream "https://$GH_TOKEN@github.com/pinepain/homebrew-devtools.git"
+ - git config user.name "$COMMIT_AUTHOR_NAME (Travis CI)"
+ - git config user.email "$COMMIT_AUTHOR_EMAIL"
+ - unset TRAVIS
+
+install: skip
+
+script:
+  - brew test-bot "./Formula/${TARGET_FORMULA}.rb"
+
+after_success:
+  - ls -la
+  - export FORMULA_JSON=`ls | grep $TARGET_FORMULA | grep json`
+  - export FORMULA_BOTTLE=`ls | grep $TARGET_FORMULA | grep tar.gz`
+  - export FORMULA_VERSION=`echo ${FORMULA_JSON} | sed 's/.*-\([0-9\.][0-9\.]*\)\..*/\1/'`
+  - env
+  - unset HOMEBREW_BOTTLE_DOMAIN && brew bottle --merge --write --no-commit --root-url="${BINTRAY_ROOT_URL}" $FORMULA_JSON
+  - git commit -m "${TARGET_FORMULA} - update ${FORMULA_VERSION} bottle [skip ci]" ./Formula/
+  - git push
+  - curl -T ${FORMULA_BOTTLE} -u${BINTRAY_USER}:${BINTRAY_API_KEY} https://api.bintray.com/content/pinepain/bottles-devtools/${TARGET_FORMULA_NAME}/${FORMULA_VERSION}/${FORMULA_BOTTLE}
+  - curl -X POST -u${BINTRAY_USER}:${BINTRAY_API_KEY} https://api.bintray.com/content/pinepain/bottles-devtools/${TARGET_FORMULA_NAME}/${FORMULA_VERSION}/publish
