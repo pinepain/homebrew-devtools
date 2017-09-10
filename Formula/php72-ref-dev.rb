@@ -1,6 +1,6 @@
 require Formula['php72'].path.parent.parent + "Abstract/abstract-php-extension"
 
-class Php71Ref < AbstractPhp71Extension
+class Php72RefDev < AbstractPhp72Extension
   init
   desc "Soft and Weak references support for PHP"
   homepage "https://github.com/pinepain/php-ref"
