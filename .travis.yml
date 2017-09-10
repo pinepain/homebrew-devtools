@@ -17,6 +17,7 @@ before_install:
  - if [ ! -f "./Formula/${TARGET_FORMULA}.rb" ]; then echo "Target formula \"${TARGET_FORMULA}\" does not exists"; exit 1; fi
  - brew tap homebrew/php
  - mkdir /usr/local/Homebrew/Library/Taps/pinepain && ln -s . /usr/local/Homebrew/Library/Taps/pinepain/homebrew-devtools
+ - brew update
  - git remote add upstream "https://$GH_TOKEN@github.com/pinepain/homebrew-devtools.git"
  - git config user.name "$COMMIT_AUTHOR_NAME (Travis CI)"
  - git config user.email "$COMMIT_AUTHOR_EMAIL"
