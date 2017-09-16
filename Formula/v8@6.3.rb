@@ -19,7 +19,7 @@ class V8AT63 < Formula
 
   resource "depot_tools" do
     url "https://chromium.googlesource.com/chromium/tools/depot_tools.git",
-        :revision => "19c8ab1ad17b220e483cb9e805eb75d06a4738df"
+        :revision => "7d7c4840b7fff84e4293c1496aaee5eccd79c0e6"
   end
 
   def install
