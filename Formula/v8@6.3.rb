@@ -3,8 +3,14 @@
 class V8AT63 < Formula
   desc "Google's JavaScript engine"
   homepage "https://github.com/v8/v8/wiki"
-  url "https://github.com/v8/v8/archive/6.3.2.tar.gz"
-  sha256 "a2e8d477badb7c86c8dc652da35660ea74d9121069a854f87a290ec4e6de7575"
+  url "https://github.com/v8/v8/archive/6.3.163.tar.gz"
+  sha256 "b3b025041d258313a7365f6bea65c5676611a740e99f8f7b54b75e0a52d0d338"
+
+  bottle do
+    root_url "https://dl.bintray.com/pinepain/bottles-devtools"
+    cellar :any
+    sha256 "fc4fe3be66285ff04b1731a60cc92740ae270815541d57e7d9bed5c2b108628c" => :sierra
+  end
 
   keg_only "Provided V8 formula is co-installable and it is not installed in the library path."
 
@@ -19,7 +25,7 @@ class V8AT63 < Formula
 
   resource "depot_tools" do
     url "https://chromium.googlesource.com/chromium/tools/depot_tools.git",
-        :revision => "19c8ab1ad17b220e483cb9e805eb75d06a4738df"
+        :revision => "7d7c4840b7fff84e4293c1496aaee5eccd79c0e6"
   end
 
   def install
@@ -64,11 +70,19 @@ class V8AT63 < Formula
         target_os_only = True
       EOS
 
-      system "gclient", "sync", "--reset", "-vvv", "-j #{Hardware::CPU.cores}", "-r", v8_version
+      if ENV["CI"] then
+        system "gclient", "sync", "--reset", "-j #{Hardware::CPU.cores}", "-r", v8_version
+      else
+        system "gclient", "sync", "--reset", "-vvv", "-j #{Hardware::CPU.cores}", "-r", v8_version
+      end
 
       cd "v8" do
         system gn_command
-        system gn_comman_show_args
+
+        unless ENV["CI"] then
+          system gn_comman_show_args
+        end
+
         system "ninja", "-j #{Hardware::CPU.cores}", "-v", "-C", output_path, "d8"
 
         include.install Dir["include/*"]
