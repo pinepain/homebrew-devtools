@@ -3,8 +3,8 @@
 class V8AT63 < Formula
   desc "Google's JavaScript engine"
   homepage "https://github.com/v8/v8/wiki"
-  url "https://github.com/v8/v8/archive/6.3.2.tar.gz"
-  sha256 "a2e8d477badb7c86c8dc652da35660ea74d9121069a854f87a290ec4e6de7575"
+  url "https://github.com/v8/v8/archive/6.3.163.tar.gz"
+  sha256 "b3b025041d258313a7365f6bea65c5676611a740e99f8f7b54b75e0a52d0d338"
 
   keg_only "Provided V8 formula is co-installable and it is not installed in the library path."
 
@@ -64,11 +64,19 @@ class V8AT63 < Formula
         target_os_only = True
       EOS
 
-      system "gclient", "sync", "--reset", "-vvv", "-j #{Hardware::CPU.cores}", "-r", v8_version
+      if ENV["CI"] then
+        system "gclient", "sync", "--reset", "-j #{Hardware::CPU.cores}", "-r", v8_version
+      else
+        system "gclient", "sync", "--reset", "-vvv", "-j #{Hardware::CPU.cores}", "-r", v8_version
+      end
 
       cd "v8" do
         system gn_command
-        system gn_comman_show_args
+
+        unless ENV["CI"] then
+          system gn_comman_show_args
+        end
+
         system "ninja", "-j #{Hardware::CPU.cores}", "-v", "-C", output_path, "d8"
 
         include.install Dir["include/*"]
