@@ -2,6 +2,10 @@ os: osx
 
 osx_image: xcode8.3
 
+cache:
+  directories:
+    - $HOME/Library/Caches/Homebrew
+
 env:
   global:
     - BINTRAY_ROOT_URL="https://dl.bintray.com/pinepain/bottles-devtools"
@@ -36,7 +40,7 @@ after_success:
   - export FORMULA_BOTTLE=`ls | grep $TARGET_FORMULA | grep tar.gz`
   - export FORMULA_VERSION=`echo ${FORMULA_JSON} | sed 's/.*-\([0-9\.][0-9\.]*\)\..*/\1/'`
   - env
-  - unset HOMEBREW_BOTTLE_DOMAIN && brew bottle --merge --write --no-commit --root-url="${BINTRAY_ROOT_URL}" $FORMULA_JSON
+  - brew bottle --merge --write --no-commit --root-url="${BINTRAY_ROOT_URL}" $FORMULA_JSON
   - git status
   - git checkout ${TRAVIS_BRANCH}
   - git commit -m "Build and deploy ${TARGET_FORMULA} source package [skip ci]" ./Formula
