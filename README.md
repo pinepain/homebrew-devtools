@@ -6,6 +6,12 @@ with various formulae I use for development.
 
 See [pinepain/ppa-packaging](https://github.com/pinepain/ppa-packaging) repository for Ubuntu PPA packaging.
 
+### PLEASE READ:
+
+Maintaining this project takes significant amount of time and efforts.
+If you like my work and want to show your appreciation, please consider supporting me at https://www.patreon.com/pinepain.
+
+
 ### Requirements:
 
 The [Homebrew PHP](https://github.com/Homebrew/homebrew-php) tap - `brew tap homebrew/php`.
