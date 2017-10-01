@@ -9,7 +9,7 @@ class V8AT63 < Formula
   bottle do
     root_url "https://dl.bintray.com/pinepain/bottles-devtools"
     cellar :any
-    sha256 "137b535222941d1e69f68b34116ac4f4a7d4e5b13a14547cacde13358b5fc2d4" => :sierra
+    sha256 "b5f9ff16d0066abe66206613a8b1cc8bd36d3d7982be365dfb4156a40f34d393" => :high_sierra
   end
 
   keg_only "Provided V8 formula is co-installable and it is not installed in the library path."
