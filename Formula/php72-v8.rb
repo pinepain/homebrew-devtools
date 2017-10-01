@@ -11,10 +11,12 @@ class Php72V8 < AbstractPhp72Extension
   depends_on 'v8@6.3'
 
   bottle do
+    root_url "https://dl.bintray.com/pinepain/bottles-devtools"
+    sha256 "84b1ef0a8503e832b113f7e7d92406373fba98cecb752540125b5742422659b4" => :high_sierra
   end
 
   def install
-    v8_prefix=Formula['v8@6.2'].opt_prefix
+    v8_prefix=Formula['v8@6.3'].opt_prefix
 
     safe_phpize
     system "./configure", "--prefix=#{prefix}", "--with-v8=#{v8_prefix}", phpconfig

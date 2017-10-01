@@ -16,7 +16,7 @@ class Php71V8 < AbstractPhp71Extension
   end
 
   def install
-    v8_prefix=Formula['v8@6.2'].opt_prefix
+    v8_prefix=Formula['v8@6.3'].opt_prefix
 
     safe_phpize
     system "./configure", "--prefix=#{prefix}", "--with-v8=#{v8_prefix}", phpconfig
