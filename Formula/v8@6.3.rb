@@ -3,13 +3,13 @@
 class V8AT63 < Formula
   desc "Google's JavaScript engine"
   homepage "https://github.com/v8/v8/wiki"
-  url "https://github.com/v8/v8/archive/6.3.180.tar.gz"
-  sha256 "cda4308c0304d055dbe1a464b59b394c3537e8cc704941d9946cd2702d53e50f"
+  url "https://github.com/v8/v8/archive/6.3.248.tar.gz"
+  sha256 "9ba1aba8736ff7ed476e95bfcdb436cc128b5d20e59b5db5bdbd141e8b6d94a2"
 
   bottle do
     root_url "https://dl.bintray.com/pinepain/bottles-devtools"
     cellar :any
-    sha256 "b5f9ff16d0066abe66206613a8b1cc8bd36d3d7982be365dfb4156a40f34d393" => :high_sierra
+    sha256 "7012479640903d3459ab6b789fe12aa5cc4dab612d44859004e699a1c96b836d" => :high_sierra
   end
 
   keg_only "Provided V8 formula is co-installable and it is not installed in the library path."
@@ -25,7 +25,7 @@ class V8AT63 < Formula
 
   resource "depot_tools" do
     url "https://chromium.googlesource.com/chromium/tools/depot_tools.git",
-        :revision => "897602abc7548572c66579246e55f3d598ee4769"
+        :revision => "e0214743cb0150774ed9d766cd2031ffc38c0335"
   end
 
   def install
