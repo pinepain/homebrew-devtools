@@ -7,12 +7,13 @@ class Php72V8 < AbstractPhp72Extension
   url "https://github.com/pinepain/php-v8/archive/v0.2.0.tar.gz"
   sha256 "7a8f9268e11fde6660ec16ffd16d782fe3740cca57591dbf07303baae9752a47"
   head "https://github.com/pinepain/php-v8.git"
+  revision 1
 
   depends_on 'v8@6.4'
 
   bottle do
     root_url "https://dl.bintray.com/pinepain/bottles-devtools"
-    sha256 "84b1ef0a8503e832b113f7e7d92406373fba98cecb752540125b5742422659b4" => :high_sierra
+    sha256 "44afe425cc8a7664ebe02ee6172311d6a96642237a1cc047db49549551f3e7dd" => :high_sierra
   end
 
   def install
