@@ -29,7 +29,7 @@ brew bottle --json --root-url="${BINTRAY_ROOT_URL}" --force-core-tap ./Formula/$
 
 export FORMULA_JSON=`ls | grep $TARGET_FORMULA | grep json`
 export FORMULA_BOTTLE=`ls | grep $TARGET_FORMULA | grep tar.gz`
-export FORMULA_VERSION=`echo ${FORMULA_JSON} | sed 's/.*-\([0-9\.][0-9\.]*\)\..*/\1/'`
+export FORMULA_VERSION=`echo ${FORMULA_JSON} | sed 's/.*-\([0-9\.][_0-9\.]*\)\..*/\1/'`
 
 brew bottle --merge --write --no-commit --root-url="${BINTRAY_ROOT_URL}" $FORMULA_JSON
 
