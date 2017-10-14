@@ -8,15 +8,15 @@ class Php71V8 < AbstractPhp71Extension
   sha256 "7a8f9268e11fde6660ec16ffd16d782fe3740cca57591dbf07303baae9752a47"
   head "https://github.com/pinepain/php-v8.git"
 
-  depends_on 'v8@6.3'
+  depends_on 'v8@6.4'
 
   bottle do
     root_url "https://dl.bintray.com/pinepain/bottles-devtools"
-    sha256 "e1c2ec4b508e348e5991da975d604c7dddf1da1620d57cfc96a3551ee7eec59c" => :high_sierra
+    sha256 "815e146113a03605545368ccd89474526a89e67d7d113785b5c8cbd6e2e06e7a" => :high_sierra
   end
 
   def install
-    v8_prefix=Formula['v8@6.3'].opt_prefix
+    v8_prefix=Formula['v8@6.4'].opt_prefix
 
     safe_phpize
     system "./configure", "--prefix=#{prefix}", "--with-v8=#{v8_prefix}", phpconfig
