@@ -12,7 +12,7 @@ class Php71V8 < AbstractPhp71Extension
 
   bottle do
     root_url "https://dl.bintray.com/pinepain/bottles-devtools"
-    sha256 "815e146113a03605545368ccd89474526a89e67d7d113785b5c8cbd6e2e06e7a" => :high_sierra
+    sha256 "b6cb10bbb918d06abb4c7546cc0126304740acfac2eb3ade3a76ae1026a75d8f" => :high_sierra
   end
 
   def install
