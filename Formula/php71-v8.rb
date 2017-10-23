@@ -4,15 +4,15 @@ class Php71V8 < AbstractPhp71Extension
   init
   desc "PHP extension for V8 JavaScript engine"
   homepage "https://github.com/pinepain/php-v8"
-  url "https://github.com/pinepain/php-v8/archive/v0.2.0.tar.gz"
-  sha256 "7a8f9268e11fde6660ec16ffd16d782fe3740cca57591dbf07303baae9752a47"
+  url "https://github.com/pinepain/php-v8/archive/v0.2.1.tar.gz"
+  sha256 "b06b8b266c753ebc9c41f59f86474bb9b90eeb711da6d2abc7a47e7ba5f57f0b"
   head "https://github.com/pinepain/php-v8.git"
 
   depends_on 'v8@6.4'
 
   bottle do
     root_url "https://dl.bintray.com/pinepain/bottles-devtools"
-    sha256 "b6cb10bbb918d06abb4c7546cc0126304740acfac2eb3ade3a76ae1026a75d8f" => :high_sierra
+    sha256 "e194e554f28a94f665c4ec1ee68989312b72e95db82605ea46431aed554125a4" => :high_sierra
   end
 
   def install
