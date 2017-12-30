@@ -42,7 +42,6 @@ class V8AT65 < Formula
     # Configure build
     gn_args = {
         is_debug: false,
-        is_official_build: true,
         is_component_build: true,
         v8_use_external_startup_data: false
     }
