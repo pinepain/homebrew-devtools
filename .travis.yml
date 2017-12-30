@@ -28,7 +28,7 @@ before_install:
 install: skip
 
 script:
-  - brew fetch --retry  --build-bottle ./Formula/${TARGET_FORMULA}.rb
+  - brew fetch --retry --build-bottle ./Formula/${TARGET_FORMULA}.rb
   - brew install --only-dependencies --build-bottle ./Formula/${TARGET_FORMULA}.rb
   - brew install --verbose --build-bottle ./Formula/${TARGET_FORMULA}.rb
   - brew audit --online ./Formula/${TARGET_FORMULA}.rb || true

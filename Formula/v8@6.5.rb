@@ -9,7 +9,7 @@ class V8AT65 < Formula
   bottle do
     root_url "https://dl.bintray.com/pinepain/bottles-devtools"
     cellar :any
-    sha256 "e5003f08a2ab5888a2c3665c96ea717425fe264e6c550bf35c8c93457c0f6a5c" => :sierra
+    sha256 "c2a39db7d47b983e89ab63a7ed90e79011eeae0c19dc0ec2a1b2ebe81daee705" => :high_sierra
   end
 
   keg_only "Provided V8 formula is co-installable and it is not installed in the library path."
@@ -42,8 +42,9 @@ class V8AT65 < Formula
     # Configure build
     gn_args = {
         is_debug: false,
+        is_official_build: true,
         is_component_build: true,
-        v8_use_external_startup_data: false,
+        v8_use_external_startup_data: false
     }
 
     v8_version = version
@@ -71,7 +72,7 @@ class V8AT65 < Formula
       EOS
 
       if ENV["CI"] then
-        system "gclient", "sync", "--reset", "-j #{Hardware::CPU.cores}", "-r", v8_version
+        system "gclient", "sync", "--no-history", "--reset", "-j #{Hardware::CPU.cores}", "-r", v8_version
       else
         system "gclient", "sync", "--reset", "-vvv", "-j #{Hardware::CPU.cores}", "-r", v8_version
       end
