@@ -21,7 +21,7 @@ class V8AT65 < Formula
   # depot_tools/GN require Python 2.7+
   depends_on :python => :build
 
-  needs :cxx11
+  needs :cxx14
 
   resource "depot_tools" do
     url "https://chromium.googlesource.com/chromium/tools/depot_tools.git",
@@ -42,8 +42,10 @@ class V8AT65 < Formula
     # Configure build
     gn_args = {
         is_debug: false,
+        is_official_build: true,
         is_component_build: true,
-        v8_use_external_startup_data: false
+        v8_use_external_startup_data: false,
+        treat_warnings_as_errors: false
     }
 
     v8_version = version
@@ -73,7 +75,7 @@ class V8AT65 < Formula
       if ENV["CI"] then
         system "gclient", "sync", "--no-history", "--reset", "-j #{Hardware::CPU.cores}", "-r", v8_version
       else
-        system "gclient", "sync", "--reset", "-vvv", "-j #{Hardware::CPU.cores}", "-r", v8_version
+        system "gclient", "sync", "-vvv", "--reset", "-j #{Hardware::CPU.cores}", "-r", v8_version
       end
 
       cd "v8" do
