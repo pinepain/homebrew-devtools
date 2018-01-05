@@ -3,13 +3,13 @@
 class V8AT65 < Formula
   desc "Google's JavaScript engine"
   homepage "https://github.com/v8/v8/wiki"
-  url "https://github.com/v8/v8/archive/6.5.116.tar.gz"
-  sha256 "e66656d8868e4c85e30627aaad927f23ff95ee28b7d1dac3cb00877c2fff69df"
+  url "https://github.com/v8/v8/archive/6.5.144.tar.gz"
+  sha256 "5467c81692238105dd3928b936c30131934c408301e8afcd23ef96a8ec455a8b"
 
   bottle do
     root_url "https://dl.bintray.com/pinepain/bottles-devtools"
     cellar :any
-    sha256 "c2a39db7d47b983e89ab63a7ed90e79011eeae0c19dc0ec2a1b2ebe81daee705" => :high_sierra
+    sha256 "cd99583fd7ab0ef3880c0811498a66eed9387ca96f6423aec46a91de83123a9a" => :high_sierra
   end
 
   keg_only "Provided V8 formula is co-installable and it is not installed in the library path."
@@ -19,13 +19,13 @@ class V8AT65 < Formula
   depends_on :macos => :el_capitan
 
   # depot_tools/GN require Python 2.7+
-  depends_on :python => :build
+  depends_on "python" => :build
 
   needs :cxx14
 
   resource "depot_tools" do
     url "https://chromium.googlesource.com/chromium/tools/depot_tools.git",
-        :revision => "ebe839b6bfc3e9276b8d1e42a0d6e830bb04899e"
+        :revision => "df27bf6f0034ac718433f8c745f9229514aca960"
   end
 
   def install
@@ -44,6 +44,7 @@ class V8AT65 < Formula
         is_debug: false,
         is_official_build: true,
         is_component_build: true,
+        use_allocator_shim: false,
         v8_use_external_startup_data: false,
         treat_warnings_as_errors: false
     }
@@ -54,7 +55,8 @@ class V8AT65 < Formula
     output_path = "out.gn/#{output_name}"
 
     gn_command = "gn gen #{output_path} --args=\"#{gn_args.map { |k, v| "#{k}=#{v}" }.join(' ')}\""
-    gn_comman_show_args = "gn args #{output_path} --list"
+    gn_command_show_args = "gn args #{output_path} --list"
+    gn_command_show_args_store = "#{gn_command_show_args} > #{output_path}/gn_args.txt"
 
     cd repo_cache do
       system "gclient", "root"
@@ -80,14 +82,15 @@ class V8AT65 < Formula
 
       cd "v8" do
         system gn_command
+        system gn_command_show_args_store
 
         unless ENV["CI"] then
-          system gn_comman_show_args
+          system gn_command_show_args
         end
 
         system "ninja", "-j #{Hardware::CPU.cores}", "-v", "-C", output_path, "d8"
 
-        include.install Dir["include/*"]
+        include.install Dir["include/*", "#{output_path}/gn_args.txt"]
 
         cd output_path do
           lib.install Dir["lib*.dylib", "icudtl.dat", "d8"]
