@@ -95,11 +95,11 @@ class V8AT64 < Formula
   end
 
   test do
-    test_basic_script = <<-EOS.strip
+    test_basic_script = <<~EOS.strip
       print("Hello World!");
     EOS
 
-    test_icu_script = <<-EOS.undent.tr("\n", " ").strip
+    test_icu_script = <<~EOS.tr("\n", " ").strip
       var date = new Date(Date.UTC(2012, 11, 20, 3, 0, 0));
       print(new Intl.DateTimeFormat("en-US").format(date));
     EOS
