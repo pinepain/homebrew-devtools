@@ -4,19 +4,19 @@ class Php71V8 < AbstractPhp71Extension
   init
   desc "PHP extension for V8 JavaScript engine"
   homepage "https://github.com/pinepain/php-v8"
-  url "https://github.com/pinepain/php-v8/archive/v0.2.1.tar.gz"
-  sha256 "b06b8b266c753ebc9c41f59f86474bb9b90eeb711da6d2abc7a47e7ba5f57f0b"
+  url "https://github.com/pinepain/php-v8/archive/v0.2.2.tar.gz"
+  sha256 "6c8cf2fa57ba45ccf19b238114cb3b0dec2ad7d8533f5ba6d8a809dd3482eb02"
   head "https://github.com/pinepain/php-v8.git"
 
-  depends_on 'v8@6.4'
+  depends_on 'v8@6.6'
 
   bottle do
     root_url "https://dl.bintray.com/pinepain/bottles-devtools"
-    sha256 "e194e554f28a94f665c4ec1ee68989312b72e95db82605ea46431aed554125a4" => :high_sierra
+    sha256 "c8c7fa4bb180d1187262513cd5dca1f0029c0733eee510088b199a566c9e01d5" => :high_sierra
   end
 
   def install
-    v8_prefix=Formula['v8@6.4'].opt_prefix
+    v8_prefix=Formula['v8@6.6'].opt_prefix
 
     safe_phpize
     system "./configure", "--prefix=#{prefix}", "--with-v8=#{v8_prefix}", phpconfig
