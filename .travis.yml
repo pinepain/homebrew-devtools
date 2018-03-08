@@ -31,6 +31,7 @@ script:
   - brew fetch --retry --build-bottle ./Formula/${TARGET_FORMULA}.rb
   - brew install --only-dependencies --build-bottle ./Formula/${TARGET_FORMULA}.rb
   - brew install --verbose --build-bottle ./Formula/${TARGET_FORMULA}.rb
+#  - brew install --verbose --build-bottle --env=std ./Formula/${TARGET_FORMULA}.rb
   - brew audit --online ./Formula/${TARGET_FORMULA}.rb || true
   - brew bottle --json --root-url="${BINTRAY_ROOT_URL}" --force-core-tap ./Formula/${TARGET_FORMULA}.rb
 
