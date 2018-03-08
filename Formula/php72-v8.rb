@@ -1,4 +1,4 @@
-require Formula['php72'].path.parent.parent + "Abstract/abstract-php-extension"
+require Formula['php'].path.parent.parent.parent + "homebrew-php/Abstract/abstract-php-extension"
 
 class Php72V8 < AbstractPhp72Extension
   init
