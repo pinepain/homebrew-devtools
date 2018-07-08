@@ -1,5 +1,5 @@
-pinepain/devtools [![Build Status](https://travis-ci.org/pinepain/homebrew-devtools.svg?branch=master)](https://travis-ci.org/pinepain/homebrew-devtools)
-====================
+pinepain/devtools
+=================
 
 This is a [homebrew](http://brew.sh/) [tap](https://docs.brew.sh/Taps) with various formulae for phpv8 and it dependencies.
 with various formulae I use for development.
